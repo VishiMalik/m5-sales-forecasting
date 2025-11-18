@@ -21,7 +21,8 @@ store_id = st.sidebar.selectbox("Select Store", sorted(data['store_id'].unique()
 filtered = data[(data['id'] == item_id) & (data['store_id'] == store_id)]
 
 if not filtered.empty:
-    X = filtered[['lag_7', 'lag_28', 'dayofweek', 'month', 'is_event']]
+    X = X = filtered[['lag_7', 'lag_28', 'dayofweek', 'month', 'is_event',
+              'rolling_mean_7', 'rolling_std_7', 'price_norm', 'price_change']]
     y_true = filtered['sales']
     y_pred = model.predict(X)
 
