@@ -1,43 +1,95 @@
-# M5 Forecasting: Walmart Daily Sales Prediction (LightGBM)
+# 📦 M5 Forecasting: Walmart Daily Sales Prediction (LightGBM)
 
-A time-series machine learning project to predict daily item sales across Walmart stores using the M5 dataset.
+A full end-to-end **time-series forecasting project** using the **M5 Walmart dataset**, focused on predicting daily item-level sales using **LightGBM regression**.
+
+---
 
 ## 📊 Objective
-Build a model to forecast future sales using:
-- Calendar info
-- Prices
-- Historical sales
-- Event information
+Build a highly accurate ML model that predicts future sales using:
+- Calendar features  
+- Price features  
+- Historical lag features  
+- Event and holiday information  
 
-## 📂 Data Used
-- sales_train_validation.csv
-- sell_prices.csv
-- calendar.csv  
-(From M5 Forecasting - Accuracy Kaggle dataset)
+This project demonstrates **retail demand forecasting**, **feature engineering**, and **model evaluation**.
 
-## ⚙️ Methods
-- Data cleaning & joining with DuckDB
-- Feature engineering (lags, rolling stats, time features)
-- Train/validation split
-- LightGBM regression with early stopping
+---
 
-## ✅ Results
-- Validation RMSE: **2.92**
-- Model trained on ~6,700 samples
+## 📂 Dataset
+From **M5 Forecasting – Accuracy (Kaggle)**:
 
-## 📌 Key Features Engineered
-- Lag features (`lag_7`, `lag_28`)
-- Rolling mean/std
-- Event flags
-- Normalized & % change in price
+- `sales_train_validation.csv` – historical sales  
+- `sell_prices.csv` – item-store weekly prices  
+- `calendar.csv` – date mapping + events  
+
+---
+
+## ⚙️ Workflow / Methods
+- Performed **data cleaning** and SQL-style joins using **DuckDB**
+- Generated advanced **time-series features**  
+- Created lag and rolling statistics  
+- Split the dataset into **train / validation sets**
+- Trained a **LightGBM Regressor** with early stopping
+- Evaluated using **RMSE (Root Mean Squared Error)**
+
+---
+
+## 🧮 Model Results
+- **Validation RMSE:** 2.92  
+- Model trained on ~6,700 samples (subset for demonstration)
+- Early stopping used to prevent overfitting
+
+---
+
+## 🧱 Key Features Engineered
+- **Lag Features:**  
+  - `lag_7`, `lag_28`
+- **Rolling Statistics:**  
+  - `rolling_mean_7`, `rolling_std_7`
+- **Price Features:**  
+  - Normalized price  
+  - % change in price  
+- **Calendar Features:**  
+  - Day of week, month, year  
+  - Event names / event types  
+- **One-hot / categorical encodings**
+
+---
 
 ## 📈 Next Steps
-- Add more months of data
-- Compare XGBoost/CatBoost
-- Deploy a simple Streamlit dashboard
+- Train on the **full dataset** (all 30,490 items)
+- Add more lag windows (14, 60, 90)
+- Compare with:
+  - **XGBoost**
+  - **CatBoost**
+  - **Deep Learning (LSTM / TFT)**
+- Build a **Streamlit dashboard** for interactive forecasting
+
+---
 
 ## 🧠 Skills Demonstrated
-- Time-series ML
-- DuckDB for SQL on pandas
-- Feature engineering
-- Model evaluation
+- Time-series ML  
+- Feature engineering  
+- SQL on Pandas with DuckDB  
+- Model training & tuning  
+- RMSE evaluation  
+- Deployment using Streamlit  
+
+---
+
+## 🚀 Live Demo (Streamlit App)
+https://m5-sales-forecasting.streamlit.app/
+
+---
+
+## 📌 Tech Stack
+- Python  
+- Pandas / NumPy  
+- DuckDB  
+- LightGBM  
+- Scikit-learn  
+- Streamlit  
+
+---
+
+## 📄 Project Structure
