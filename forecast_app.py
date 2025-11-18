@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import pickle
 
 st.set_page_config(layout="wide")
-st.title("🛒 M5 Sales Forecasting Dashboard")
+st.title("M5 Sales Forecasting Dashboard")
 
 # Load pre-trained LightGBM model
-model = pickle.load(open("model_lgbm.pkl", "rb"))
+model = pickle.load(open("lgbm_model.pkl", "rb"))
 
 # Load validation data (small sample)
 data = pd.read_csv("sample_input.csv")
@@ -26,7 +26,7 @@ if not filtered.empty:
     y_pred = model.predict(X)
 
     # Line plot
-    st.subheader("📈 Forecast vs Actual")
+    st.subheader("Forecast vs Actual")
     plot_df = pd.DataFrame({
         'Date': filtered['date'],
         'Actual Sales': y_true,
@@ -36,7 +36,7 @@ if not filtered.empty:
     st.line_chart(plot_df)
 
     # Feature importance (optional)
-    st.subheader("🔍 Feature Importances")
+    st.subheader("Feature Importances")
     importances = model.feature_importances_
     feature_names = X.columns
     imp_df = pd.DataFrame({'Feature': feature_names, 'Importance': importances}).sort_values(by='Importance', ascending=False)
